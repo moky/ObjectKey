@@ -106,7 +106,7 @@
             [key release];
         }
     }
-    return mArray;
+    return [mArray autorelease];
 }
 
 - (void)enumerateKeysAndObjectsUsingBlock:(void (^)(id, id, BOOL *))block {
@@ -186,7 +186,7 @@
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     if (self == [OKWeakHashMap class]) {
-        return [WeakHashMap alloc];
+        return [WeakHashMap allocWithZone:zone];
     } else {
         return [super allocWithZone:zone];
     }

@@ -58,4 +58,14 @@ NS_DESIGNATED_INITIALIZER;
 
 @end
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+NSTimeInterval OKGetCurrentTimeInterval(void);
+
+#ifdef __cplusplus
+} /* end of extern "C" */
+#endif
+
 NS_ASSUME_NONNULL_END

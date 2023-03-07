@@ -99,6 +99,7 @@
         object = [object retain];
         if (object) {
             block(object, &stop);
+            [object release];
         }
         if (stop) {
             break;
@@ -166,7 +167,7 @@
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     if (self == [OKWeakSet class]) {
-        return [WeakSet alloc];
+        return [WeakSet allocWithZone:zone];
     } else {
         return [super allocWithZone:zone];
     }

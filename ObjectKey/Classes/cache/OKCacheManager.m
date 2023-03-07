@@ -50,6 +50,13 @@
 
 OKSingletonImplementations(OKCacheManager, sharedInstance)
 
+- (void)dealloc {
+    [_poolMap release];
+    _poolMap = nil;
+    
+    [super dealloc];
+}
+
 - (instancetype)init {
     if (self = [super init]) {
         _poolMap = [[NSMutableDictionary alloc] init];
@@ -62,6 +69,7 @@ OKSingletonImplementations(OKCacheManager, sharedInstance)
     if (!pool) {
         pool = [[OKCachePool alloc] init];
         [_poolMap setObject:pool forKey:name];
+        [pool autorelease];
     }
     return pool;
 }

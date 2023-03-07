@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @return   The object to which this reference refers, or
  *           <code>null</code> if this reference object has been cleared
  */
-@property (nonatomic, readonly, nullable) ObjectType target;
+@property (atomic, readonly, nullable) ObjectType target;
 
 /**
  * Creates a new weak reference that refers to the given object.

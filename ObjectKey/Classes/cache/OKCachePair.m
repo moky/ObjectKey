@@ -39,13 +39,22 @@
 
 @interface OKCachePair ()
 
-@property(nonatomic, strong) id value;
+@property(nonatomic, retain) id value;
 
-@property(nonatomic, strong) OKCacheHolder<id> *holder;
+@property(nonatomic, retain) OKCacheHolder<id> *holder;
 
 @end
 
 @implementation OKCachePair
+
+- (void)dealloc {
+    [_value release];
+    _value = nil;
+    [_holder release];
+    _holder = nil;
+    
+    [super dealloc];
+}
 
 - (instancetype)init {
     NSAssert(false, @"DON'T call me");

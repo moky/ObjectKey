@@ -46,6 +46,13 @@
 
 @implementation OKCachePool
 
+- (void)dealloc {
+    [_holderMap release];
+    _holderMap = nil;
+    
+    [super dealloc];
+}
+
 - (instancetype)init {
     if (self = [super init]) {
         _holderMap = [[NSMutableDictionary alloc] init];
@@ -65,7 +72,8 @@
     holder = [[OKCacheHolder alloc] initWithValue:value
                                           lifeSpan:cacheLifeSpan
                                               time:now];
-    return [self updateHolder:holder forKey:key];
+    [self updateHolder:holder forKey:key];
+    return [holder autorelease];
 }
 
 - (OKCacheHolder<id> *)updateHolder:(OKCacheHolder<id> *)holder
@@ -93,17 +101,20 @@
     if (!holder) {
         // holder not found
         return nil;
-    } else if ([holder isAlive:now]) {
-        return [[OKCachePair alloc] initWithValue:holder.value holder:holder];
+    }
+    OKCachePair<id> *pair;
+    if ([holder isAlive:now]) {
+        pair = [[OKCachePair alloc] initWithValue:holder.value holder:holder];
     } else {
         // holder expired
-        return [[OKCachePair alloc] initWithValue:nil holder:holder];
+        pair = [[OKCachePair alloc] initWithValue:nil holder:holder];
     }
+    return [pair autorelease];
 }
 
 - (NSUInteger)purge:(NSTimeInterval)now {
     if (now < 1) {
-        now = [[NSDate date] timeIntervalSince1970];
+        now = OKGetCurrentTimeInterval();
     }
     NSUInteger count = 0;
     NSArray<id> *allKeys = [self allKeys];

@@ -61,7 +61,8 @@
 }
 
 - (nullable id)target {
-    return _target;
+    id target = [_target retain];
+    return [target autorelease];
 }
 
 - (void)clear {
@@ -71,7 +72,7 @@
 #pragma mark Object
 
 - (NSUInteger)hash {
-    return [_target hash];
+    return [self.target hash];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -83,14 +84,14 @@
         object = [object target];
     }
     // compare with target object
-    return !object ? !_target : [object isEqual:_target];
+    return !object ? !self.target : [object isEqual:self.target];
 }
 
 #pragma mark Copy
 
 - (id)copyWithZone:(nullable NSZone *)zone {
     id clone = [[self class] copyWithZone:zone];
-    clone = [clone initWithTarget:_target];
+    clone = [clone initWithTarget:self.target];
     return [clone autorelease];
 }
 

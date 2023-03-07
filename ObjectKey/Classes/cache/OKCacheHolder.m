@@ -44,11 +44,18 @@
     NSTimeInterval _deprecated;  // time to deprecated
 }
 
-@property(nonatomic, strong) ObjectType value;
+@property(nonatomic, retain) ObjectType value;
 
 @end
 
 @implementation OKCacheHolder
+
+- (void)dealloc {
+    [_value release];
+    _value = nil;
+    
+    [super dealloc];
+}
 
 - (instancetype)init {
     NSAssert(false, @"DON'T call me");
@@ -64,7 +71,7 @@
         self.value = value;
         _lifeSpan = cacheLifeSpan;
         if (now < 1) {
-            now = [[NSDate date] timeIntervalSince1970];
+            now = OKGetCurrentTimeInterval();
         }
         _expired = now + _lifeSpan;
         _deprecated = now + _lifeSpan * 2;
@@ -75,7 +82,7 @@
 - (void)updateValue:(id)value time:(NSTimeInterval)now {
     self.value = value;
     if (now < 1) {
-        now = [[NSDate date] timeIntervalSince1970];
+        now = OKGetCurrentTimeInterval();
     }
     _expired = now + _lifeSpan;
     _deprecated = now + _lifeSpan * 2;
@@ -86,7 +93,7 @@
         duration = 128.0;
     }
     if (now < 1) {
-        now = [[NSDate date] timeIntervalSince1970];
+        now = OKGetCurrentTimeInterval();
     }
     _expired = now + duration;
     _deprecated = now + _lifeSpan * 2;
@@ -94,16 +101,23 @@
 
 - (BOOL)isAlive:(NSTimeInterval)now {
     if (now < 1) {
-        now = [[NSDate date] timeIntervalSince1970];
+        now = OKGetCurrentTimeInterval();
     }
     return now < _expired;
 }
 
 - (BOOL)isDeprecated:(NSTimeInterval)now {
     if (now < 1) {
-        now = [[NSDate date] timeIntervalSince1970];
+        now = OKGetCurrentTimeInterval();
     }
     return now > _deprecated;
 }
 
 @end
+
+NSTimeInterval OKGetCurrentTimeInterval(void) {
+    NSDate *now = [[NSDate alloc] init];
+    NSTimeInterval ts = [now timeIntervalSince1970];
+    [now release];
+    return ts;
+}
