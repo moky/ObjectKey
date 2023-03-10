@@ -35,6 +35,8 @@
 //  Copyright © 2023 DIM Group. All rights reserved.
 //
 
+#import "OKTime.h"
+
 #import "OKCacheHolder.h"
 
 @interface OKCacheHolder<__covariant ObjectType> () {
@@ -114,10 +116,3 @@
 }
 
 @end
-
-NSTimeInterval OKGetCurrentTimeInterval(void) {
-    NSDate *now = [[NSDate alloc] init];
-    NSTimeInterval ts = [now timeIntervalSince1970];
-    [now release];
-    return ts;
-}

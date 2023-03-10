@@ -28,26 +28,31 @@
 // SOFTWARE.
 // =============================================================================
 //
-//  OKCacheManager.h
+//  OKTime.m
 //  ObjectKey
 //
-//  Created by Albert Moky on 2023/3/3.
-//  Copyright © 2023 DIM Group. All rights reserved.
+//  Created by Albert Moky on 2023/3/8.
 //
 
-#import <ObjectKey/OKCachePool.h>
+#import "OKTime.h"
 
-NS_ASSUME_NONNULL_BEGIN
+NSDate *OKGetTime(NSTimeInterval seconds) {
+    NSDate *now = [[NSDate alloc] initWithTimeIntervalSince1970:seconds];
+    return [now autorelease];
+}
 
-@interface OKCacheManager : NSObject
+NSTimeInterval OKGetTimeInterval(NSDate *date) {
+    return [date timeIntervalSince1970];
+}
 
-+ (instancetype)sharedInstance;
+NSDate *OKGetCurrentTime(void) {
+    NSDate *now = [[NSDate alloc] init];
+    return [now autorelease];
+}
 
-- (OKCachePool *)poolForName:(const NSString *)name;
-
-- (void)start;
-- (void)stop;
-
-@end
-
-NS_ASSUME_NONNULL_END
+NSTimeInterval OKGetCurrentTimeInterval(void) {
+    NSDate *now = [[NSDate alloc] init];
+    NSTimeInterval ti = [now timeIntervalSince1970];
+    [now release];
+    return ti;
+}

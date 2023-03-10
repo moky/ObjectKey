@@ -41,7 +41,7 @@
 
 @interface OKCacheManager () {
     
-    NSMutableDictionary<NSString *, OKCachePool *> *_poolMap;
+    NSMutableDictionary<const NSString *, OKCachePool *> *_poolMap;
 }
 
 @end
@@ -64,7 +64,7 @@ OKSingletonImplementations(OKCacheManager, sharedInstance)
     return self;
 }
 
-- (OKCachePool *)poolForName:(NSString *)name {
+- (OKCachePool *)poolForName:(const NSString *)name {
     OKCachePool *pool = [_poolMap objectForKey:name];
     if (!pool) {
         pool = [[OKCachePool alloc] init];

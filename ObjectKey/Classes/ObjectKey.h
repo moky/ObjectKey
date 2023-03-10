@@ -16,6 +16,8 @@ FOUNDATION_EXPORT const unsigned char ObjectKeyVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <ObjectKey/PublicHeader.h>
 
 #import <ObjectKey/OKSingleton.h>
+#import <ObjectKey/OKTime.h>
+#import <ObjectKey/OKTuples.h>
 
 #import <ObjectKey/OKWeakReference.h>
 #import <ObjectKey/OKAbstractMap.h>

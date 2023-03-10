@@ -52,13 +52,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OKWeakHashMap (NSDictionaryCreation)
 
-+ (instancetype)dictionary;
++ (instancetype)map;
 
 @end
 
 @interface OKWeakHashMap (NSMutableDictionaryCreation)
 
-+ (instancetype)dictionaryWithCapacity:(NSUInteger)numItems;
++ (instancetype)mapWithCapacity:(NSUInteger)numItems;
 
 @end
 

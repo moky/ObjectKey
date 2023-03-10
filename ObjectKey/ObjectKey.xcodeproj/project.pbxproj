@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9BBD04429B9A7CB0019F52B /* OKTuples.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BBD04029B9A7CB0019F52B /* OKTuples.m */; };
+		E9BBD04529B9A7CB0019F52B /* OKTuples.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BBD04129B9A7CB0019F52B /* OKTuples.h */; };
+		E9BBD04629B9A7CB0019F52B /* OKTime.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BBD04229B9A7CB0019F52B /* OKTime.m */; };
+		E9BBD04729B9A7CB0019F52B /* OKTime.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BBD04329B9A7CB0019F52B /* OKTime.h */; };
 		E9EF8A1D29B713C300BB305B /* ObjectKey.docc in Sources */ = {isa = PBXBuildFile; fileRef = E9EF8A1C29B713C300BB305B /* ObjectKey.docc */; };
 		E9EF8A2329B713C400BB305B /* ObjectKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9EF8A1829B713C300BB305B /* ObjectKey.framework */; };
 		E9EF8A2829B713C400BB305B /* ObjectKeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EF8A2729B713C400BB305B /* ObjectKeyTests.m */; };
@@ -43,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9BBD04029B9A7CB0019F52B /* OKTuples.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKTuples.m; sourceTree = "<group>"; };
+		E9BBD04129B9A7CB0019F52B /* OKTuples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKTuples.h; sourceTree = "<group>"; };
+		E9BBD04229B9A7CB0019F52B /* OKTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OKTime.m; sourceTree = "<group>"; };
+		E9BBD04329B9A7CB0019F52B /* OKTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OKTime.h; sourceTree = "<group>"; };
 		E9EF8A1829B713C300BB305B /* ObjectKey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectKey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EF8A1C29B713C300BB305B /* ObjectKey.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ObjectKey.docc; sourceTree = "<group>"; };
 		E9EF8A2229B713C300BB305B /* ObjectKeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjectKeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +178,10 @@
 			isa = PBXGroup;
 			children = (
 				E9EF8A4129B7154D00BB305B /* OKSingleton.h */,
+				E9BBD04329B9A7CB0019F52B /* OKTime.h */,
+				E9BBD04229B9A7CB0019F52B /* OKTime.m */,
+				E9BBD04129B9A7CB0019F52B /* OKTuples.h */,
+				E9BBD04029B9A7CB0019F52B /* OKTuples.m */,
 			);
 			path = sys;
 			sourceTree = "<group>";
@@ -184,6 +196,8 @@
 				E9EF8A4429B7154D00BB305B /* OKWeakHashMap.h in Headers */,
 				E9EF8A4729B7154D00BB305B /* OKAbstractMap.h in Headers */,
 				E9EF8A4629B7154D00BB305B /* OKWeakSet.h in Headers */,
+				E9BBD04729B9A7CB0019F52B /* OKTime.h in Headers */,
+				E9BBD04529B9A7CB0019F52B /* OKTuples.h in Headers */,
 				E9EF8A5C29B715A000BB305B /* OKCachePool.h in Headers */,
 				E9EF8A4C29B7154D00BB305B /* ObjectKey.h in Headers */,
 				E9EF8A4829B7154D00BB305B /* OKWeakReference.h in Headers */,
@@ -296,8 +310,10 @@
 				E9EF8A5B29B715A000BB305B /* OKCacheHolder.m in Sources */,
 				E9EF8A1D29B713C300BB305B /* ObjectKey.docc in Sources */,
 				E9EF8A5929B715A000BB305B /* OKCachePair.m in Sources */,
+				E9BBD04629B9A7CB0019F52B /* OKTime.m in Sources */,
 				E9EF8A4B29B7154D00BB305B /* OKAbstractSet.m in Sources */,
 				E9EF8A4229B7154D00BB305B /* OKWeakReference.m in Sources */,
+				E9BBD04429B9A7CB0019F52B /* OKTuples.m in Sources */,
 				E9EF8A5D29B715A000BB305B /* OKCacheManager.m in Sources */,
 				E9EF8A5829B715A000BB305B /* OKCachePool.m in Sources */,
 				E9EF8A4929B7154D00BB305B /* OKWeakHashMap.m in Sources */,

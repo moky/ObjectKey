@@ -96,3 +96,12 @@
 }
 
 @end
+
+@implementation OKWeakReference (Creation)
+
++ (instancetype)referenceWithTarget:(id)target {
+    OKWeakReference *ref = [[OKWeakReference alloc] initWithTarget:target];
+    return [ref autorelease];
+}
+
+@end

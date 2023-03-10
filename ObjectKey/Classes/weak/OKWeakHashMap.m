@@ -37,13 +37,13 @@
 
 #import "OKWeakHashMap.h"
 
-@interface WeakHashMap : OKWeakHashMap
+@interface __WeakHashMap : OKWeakHashMap
 
 @property(nonatomic, retain) NSMapTable *table;
 
 @end
 
-@implementation WeakHashMap
+@implementation __WeakHashMap
 
 - (void)dealloc {
     [_table release];
@@ -82,7 +82,7 @@
 
 @end
 
-@implementation WeakHashMap (NSExtendedDictionary)
+@implementation __WeakHashMap (NSExtendedDictionary)
 
 - (NSArray<id> *)allKeys {
     return NSAllMapTableKeys(_table);
@@ -134,7 +134,7 @@
 
 @end
 
-@implementation WeakHashMap (NSMutableDictionary)
+@implementation __WeakHashMap (NSMutableDictionary)
 
 - (void)removeObjectForKey:(id)aKey {
     [_table removeObjectForKey:aKey];
@@ -146,28 +146,10 @@
 
 @end
 
-@implementation WeakHashMap (NSExtendedMutableDictionary)
+@implementation __WeakHashMap (NSExtendedMutableDictionary)
 
 - (void)removeAllObjects {
     [_table removeAllObjects];
-}
-
-@end
-
-@implementation WeakHashMap (NSDictionaryCreation)
-
-+ (instancetype)dictionary {
-    WeakHashMap *map = [[WeakHashMap alloc] init];
-    return [map autorelease];
-}
-
-@end
-
-@implementation WeakHashMap (NSMutableDictionaryCreation)
-
-+ (instancetype)dictionaryWithCapacity:(NSUInteger)numItems {
-    WeakHashMap *map = [[WeakHashMap alloc] initWithCapacity:numItems];
-    return [map autorelease];
 }
 
 @end
@@ -178,7 +160,7 @@
 
 + (instancetype)alloc {
     if (self == [OKWeakHashMap class]) {
-        return [WeakHashMap alloc];
+        return [__WeakHashMap alloc];
     } else {
         return [super alloc];
     }
@@ -186,7 +168,7 @@
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     if (self == [OKWeakHashMap class]) {
-        return [WeakHashMap allocWithZone:zone];
+        return [__WeakHashMap allocWithZone:zone];
     } else {
         return [super allocWithZone:zone];
     }
@@ -210,7 +192,7 @@
 
 @implementation OKWeakHashMap (NSDictionaryCreation)
 
-+ (instancetype)dictionary {
++ (instancetype)map {
     OKWeakHashMap *map = [[OKWeakHashMap alloc] init];
     return [map autorelease];
 }
@@ -219,7 +201,7 @@
 
 @implementation OKWeakHashMap (NSMutableDictionaryCreation)
 
-+ (instancetype)dictionaryWithCapacity:(NSUInteger)numItems {
++ (instancetype)mapWithCapacity:(NSUInteger)numItems {
     OKWeakHashMap *map = [[OKWeakHashMap alloc] initWithCapacity:numItems];
     return [map autorelease];
 }

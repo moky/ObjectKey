@@ -66,4 +66,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface OKWeakReference<ObjectType> (Creation)
+
++ (instancetype)referenceWithTarget:(ObjectType)target;
+
+@end
+
 NS_ASSUME_NONNULL_END

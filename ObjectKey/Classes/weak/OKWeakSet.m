@@ -37,13 +37,13 @@
 
 #import "OKWeakSet.h"
 
-@interface WeakSet : OKWeakSet
+@interface __WeakSet : OKWeakSet
 
 @property(nonatomic, retain) NSHashTable *table;
 
 @end
 
-@implementation WeakSet
+@implementation __WeakSet
 
 - (void)dealloc {
     [_table release];
@@ -76,7 +76,7 @@
 
 @end
 
-@implementation WeakSet (NSExtendedSet)
+@implementation __WeakSet (NSExtendedSet)
 
 - (NSArray<id> *)allObjects {
     //return NSAllHashTableObjects(_table);
@@ -115,7 +115,7 @@
 
 @end
 
-@implementation WeakSet (NSMutableSet)
+@implementation __WeakSet (NSMutableSet)
 
 - (void)addObject:(id)object {
     [_table addObject:object];
@@ -127,28 +127,10 @@
 
 @end
 
-@implementation WeakSet (NSExtendedMutableSet)
+@implementation __WeakSet (NSExtendedMutableSet)
 
 - (void)removeAllObjects {
     [_table removeAllObjects];
-}
-
-@end
-
-@implementation WeakSet (NSSetCreation)
-
-+ (instancetype)set {
-    WeakSet *set = [[WeakSet alloc] init];
-    return [set autorelease];
-}
-
-@end
-
-@implementation WeakSet (NSMutableSetCreation)
-
-+ (instancetype)setWithCapacity:(NSUInteger)numItems {
-    WeakSet *set = [[WeakSet alloc] initWithCapacity:numItems];
-    return [set autorelease];
 }
 
 @end
@@ -159,7 +141,7 @@
 
 + (instancetype)alloc {
     if (self == [OKWeakSet class]) {
-        return [WeakSet alloc];
+        return [__WeakSet alloc];
     } else {
         return [super alloc];
     }
@@ -167,7 +149,7 @@
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
     if (self == [OKWeakSet class]) {
-        return [WeakSet allocWithZone:zone];
+        return [__WeakSet allocWithZone:zone];
     } else {
         return [super allocWithZone:zone];
     }

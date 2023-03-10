@@ -28,26 +28,62 @@
 // SOFTWARE.
 // =============================================================================
 //
-//  OKCacheManager.h
+//  OKTuples.m
 //  ObjectKey
 //
-//  Created by Albert Moky on 2023/3/3.
-//  Copyright © 2023 DIM Group. All rights reserved.
+//  Created by Albert Moky on 2023/3/8.
 //
 
-#import <ObjectKey/OKCachePool.h>
+#import "OKTuples.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface OKPair ()
 
-@interface OKCacheManager : NSObject
-
-+ (instancetype)sharedInstance;
-
-- (OKCachePool *)poolForName:(const NSString *)name;
-
-- (void)start;
-- (void)stop;
+@property(nonatomic, retain, nullable) id first;
+@property(nonatomic, retain, nullable) id second;
 
 @end
 
-NS_ASSUME_NONNULL_END
+@implementation OKPair
+
+- (instancetype)initWithFirst:(id)a second:(id)b {
+    if (self = [super init]) {
+        self.first = a;
+        self.second = b;
+    }
+    return self;
+}
+
++ (instancetype)pairWithFirst:(id)a second:(id)b {
+    OKPair *tuple = [[OKPair alloc] initWithFirst:a second:b];
+    return [tuple autorelease];
+}
+
+@end
+
+#pragma mark -
+
+@interface OKTriplet ()
+
+@property(nonatomic, retain, nullable) id first;
+@property(nonatomic, retain, nullable) id second;
+@property(nonatomic, retain, nullable) id third;
+
+@end
+
+@implementation OKTriplet
+
+- (instancetype)initWithFirst:(id)a second:(id)b third:(id)c {
+    if (self = [super init]) {
+        self.first = a;
+        self.second = b;
+        self.third = c;
+    }
+    return self;
+}
+
++ (instancetype)tripletWithFirst:(id)a second:(id)b third:(id)c {
+    OKTriplet *tuple = [[OKTriplet alloc] initWithFirst:a second:b third:c];
+    return [tuple autorelease];
+}
+
+@end

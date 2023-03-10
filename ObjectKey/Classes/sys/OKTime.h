@@ -28,26 +28,51 @@
 // SOFTWARE.
 // =============================================================================
 //
-//  OKCacheManager.h
+//  OKTime.h
 //  ObjectKey
 //
-//  Created by Albert Moky on 2023/3/3.
-//  Copyright © 2023 DIM Group. All rights reserved.
+//  Created by Albert Moky on 2023/3/8.
 //
 
-#import <ObjectKey/OKCachePool.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKCacheManager : NSObject
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-+ (instancetype)sharedInstance;
+/**
+ *  Convert timestamp to date
+ *
+ * @param seconds - timestamp from Jan 1, 1970 UTC
+ */
+NSDate *OKGetTime(NSTimeInterval seconds);
 
-- (OKCachePool *)poolForName:(const NSString *)name;
+/**
+ *  Convert date to timestamp
+ *
+ * @param date - time object
+ * @return seconds from Jan 1, 1970 UTC
+ */
+NSTimeInterval OKGetTimeInterval(NSDate *date);
 
-- (void)start;
-- (void)stop;
+/**
+ *  Now()
+ *
+ * @return current time
+ */
+NSDate *OKGetCurrentTime(void);
 
-@end
+/**
+ *  Now() as timestamp
+ *
+ * @return current timestamp in seconds from Jan 1, 1970 UTC
+ */
+NSTimeInterval OKGetCurrentTimeInterval(void);
+
+#ifdef __cplusplus
+} /* end of extern "C" */
+#endif
 
 NS_ASSUME_NONNULL_END
