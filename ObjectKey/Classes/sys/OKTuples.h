@@ -42,9 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 //
 //@property(nonatomic, readonly, nullable) A first;
 //
-//- (instancetype)initWithFirst:(A)a;
+//- (instancetype)initWithFirst:(nullable A)a;
 //
-//+ (instancetype)unitWithFirst:(A)a;
+//+ (instancetype)unitWithFirst:(nullable A)a;
 //
 //@end
 
@@ -53,9 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly, nullable) A first;
 @property(nonatomic, readonly, nullable) B second;
 
-- (instancetype)initWithFirst:(A)a second:(B)b;
+- (instancetype)initWithFirst:(nullable A)a second:(nullable B)b;
 
-+ (instancetype)pairWithFirst:(A)a second:(B)b;
++ (instancetype)pairWithFirst:(nullable A)a second:(nullable B)b;
 
 @end
 
@@ -65,9 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly, nullable) B second;
 @property(nonatomic, readonly, nullable) C third;
 
-- (instancetype)initWithFirst:(A)a second:(B)b third:(C)c;
+- (instancetype)initWithFirst:(nullable A)a second:(nullable B)b third:(nullable C)c;
 
-+ (instancetype)tripletWithFirst:(A)a second:(B)b third:(C)c;
++ (instancetype)tripletWithFirst:(nullable A)a second:(nullable B)b third:(nullable C)c;
 
 @end
 
@@ -78,9 +78,9 @@ NS_ASSUME_NONNULL_BEGIN
 //@property(nonatomic, readonly, nullable) C third;
 //@property(nonatomic, readonly, nullable) D fourth;
 //
-//- (instancetype)initWithFirst:(A)a second:(B)b third:(C)c fourth:(D)d;
+//- (instancetype)initWithFirst:(nullable A)a second:(nullable B)b third:(nullable C)c fourth:(nullable D)d;
 //
-//+ (instancetype)quartetWithFirst:(A)a second:(B)b third:(C)c fourth:(D)d;
+//+ (instancetype)quartetWithFirst:(nullable A)a second:(nullable B)b third:(nullable C)c fourth:(nullable D)d;
 //
 //@end
 //
@@ -92,9 +92,9 @@ NS_ASSUME_NONNULL_BEGIN
 //@property(nonatomic, readonly, nullable) D fourth;
 //@property(nonatomic, readonly, nullable) E fifth;
 //
-//- (instancetype)initWithFirst:(A)a second:(B)b third:(C)c fourth:(D)d fifth:(E)e;
+//- (instancetype)initWithFirst:(nullable A)a second:(nullable B)b third:(nullable C)c fourth:(nullable D)d fifth:(nullable E)e;
 //
-//+ (instancetype)quintetWithFirst:(A)a second:(B)b third:(C)c fourth:(D)d fifth:(E)e;
+//+ (instancetype)quintetWithFirst:(nullable A)a second:(nullable B)b third:(nullable C)c fourth:(nullable D)d fifth:(nullable E)e;
 //
 //@end
 
