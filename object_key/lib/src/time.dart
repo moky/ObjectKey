@@ -61,7 +61,7 @@ abstract class Time {
     } else if (timestamp is double) {
       seconds = timestamp;
     } else if (timestamp is num) {  // int
-      // assert(false, 'not a double value: $value');
+      // assert(false, 'not a double value: timestamp');
       seconds = timestamp.toDouble();
     } else if (timestamp is String) {
       seconds = double.parse(timestamp);
@@ -83,10 +83,17 @@ abstract class Time {
     } else if (time is DateTime) {
       return time.microsecondsSinceEpoch / 1000000.0;
     } else if (time is double) {
+      // exactly
       return time;
+    } else if (time is num) {  // int
+      // assert(false, 'not a double value: time');
+      return time.toDouble();
+    } else if (time is String) {
+      return double.parse(time);
+    } else {
+      assert(false, 'unknown time: $time');
+      return null;
     }
-    assert(false, 'unknown time: $time');
-    return null;
   }
 
 }

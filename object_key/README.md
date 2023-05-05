@@ -1,4 +1,4 @@
-# Decentralized Instant Messaging (Dart Demo)
+# Object & Key kits
 
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/moky/ObjectKey/blob/master/LICENSE)
