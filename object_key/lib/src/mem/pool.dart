@@ -53,7 +53,7 @@ class CachePool <K, V> {
   }
 
   /// update cache value for key with timestamp in seconds
-  CacheHolder<V> updateValue(K key, V? value, double life, {required double now}) =>
+  CacheHolder<V> updateValue(K key, V? value, double life, {double? now}) =>
       update(key, CacheHolder(value, life, now: now));
 
   /// erase cache for key
