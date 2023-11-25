@@ -34,25 +34,27 @@ class WeakSet<E extends Object> implements Set<E> {
 
   final Set<WeakReference<dynamic>> _inner;
 
+  void purge() => _inner.removeWhere((wr) => wr.target == null);
+
   @override
   void clear() => _inner.clear();
 
   @override
   Set<E> toSet() {
-    Set<E> set = {};
+    // remove empty entries
+    purge();
+    // convert entries
+    Set<E> entries = {};
     E? item;
-    Set<WeakReference<dynamic>> ghosts = {};
     for (WeakReference<dynamic> wr in _inner) {
       item = wr.target;
       if (item == null) {
-        // target released, remove the reference from inner set later
-        ghosts.add(wr);
+        assert(false, 'should not happen');
       } else {
-        set.add(item);
+        entries.add(item);
       }
     }
-    _inner.removeAll(ghosts);
-    return set;
+    return entries;
   }
 
   @override

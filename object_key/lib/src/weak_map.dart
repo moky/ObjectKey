@@ -34,10 +34,15 @@ class WeakValueMap<K, V> implements Map<K, V> {
 
   final Map<K, WeakReference<dynamic>?> _inner;
 
+  void purge() => _inner.removeWhere((key, wr) => wr?.target == null);
+
+  @override
+  void clear() => _inner.clear();
+
   Map<K, V> toMap() {
-    // remove empty entry
-    _inner.removeWhere((key, wr) => wr?.target == null);
-    // convert
+    // remove empty entries
+    purge();
+    // convert entries
     return _inner.map((key, wr) => MapEntry(key, wr?.target));
   }
 
@@ -122,9 +127,6 @@ class WeakValueMap<K, V> implements Map<K, V> {
 
   @override
   V? remove(Object? key) => _inner.remove(key)?.target;
-
-  @override
-  void clear() => _inner.clear();
 
   @override
   void forEach(void Function(K key, V value) action) => _inner.forEach((key, wr) {

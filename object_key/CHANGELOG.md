@@ -1,3 +1,7 @@
+## 0.1.1
+
+- Weak List.
+
 ## 0.1.0
 
 - Version 0.1.0 released.
