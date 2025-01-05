@@ -1,6 +1,6 @@
 name: object_key
 description: A tiny library for Objects and Keys.
-version: 0.1.1
+version: 1.0.0
 homepage: https://github.com/moky/ObjectKey
 repository: https://github.com/moky/ObjectKey
 issue_tracker: https://github.com/moky/ObjectKey/issues
