@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Remove memory cache.
+
 ## 1.0.0
 
 - OK.
