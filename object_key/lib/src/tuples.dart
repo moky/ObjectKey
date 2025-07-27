@@ -51,9 +51,11 @@ class Pair<A, B> {
   @override
   int get hashCode => Object.hash(first, second);
 
+  String get className => _runtimeType(this, 'Pair');
+
   @override
   String toString() {
-    Type clazz = runtimeType;
+    String clazz = className;
     return '<$clazz>\n\t<a>$first</a>\n\t<b>$second</b>\n</$clazz>';
   }
 
@@ -83,9 +85,11 @@ class Triplet<A, B, C> {
   @override
   int get hashCode => Object.hash(first, second, third);
 
+  String get className => _runtimeType(this, 'Triplet');
+
   @override
   String toString() {
-    Type clazz = runtimeType;
+    String clazz = className;
     return '<$clazz>\n\t<a>$first</a>\n\t<b>$second</b>\n\t<c>$third</c>\n</$clazz>';
   }
 
@@ -113,4 +117,12 @@ bool _objectEquals(Object? obj1, Object? obj2) {
   } else {
     return obj1 == obj2;
   }
+}
+
+String _runtimeType(Object object, String className) {
+  assert(() {
+    className = object.runtimeType.toString();
+    return true;
+  }());
+  return className;
 }
